@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     "empleados_api",
     'rest_framework_simplejwt',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
+]
+
+CORS_ORIGIN_WHITELIST = [
+  'http://localhost:5173'
 ]
 
 ROOT_URLCONF = 'empleados_project.urls'
