@@ -25,7 +25,7 @@ class EmpleadoSerializer(serializers.ModelSerializer):
     empleado_email = serializers.SerializerMethodField(method_name='get_email')
     class Meta:
       model = Empleado
-      fields = ['id', 'nombre', 'apellidos', 'tipoIdentificacion', 'fechaIngreso', 'salarioMensual', 'cargo', 'departamento', 'telefono_numero', 'telefono_tipo', 'telefono_indicativo', 'email', 'empleado_telefono', 'empleado_email']
+      fields = ['id', 'nombre', 'apellidos', 'tipoIdentificacion','identificacion', 'fechaIngreso', 'salarioMensual', 'cargo', 'departamento', 'telefono_numero', 'telefono_tipo', 'telefono_indicativo', 'email', 'empleado_telefono', 'empleado_email']
 
     def get_telefono(self, obj):
       telefono = obj.telefono_set.first()
@@ -55,6 +55,7 @@ class EmpleadoSerializer(serializers.ModelSerializer):
       instance.nombre = validated_data.get('nombre', instance.nombre)
       instance.apellidos = validated_data.get('apellidos', instance.apellidos)
       instance.tipoIdentificacion = validated_data.get('tipoIdentificacion', instance.tipoIdentificacion)
+      instance.identificacion = validated_data.get('identificacion', instance.identificacion)
       instance.fechaIngreso = validated_data.get('fechaIngreso', instance.fechaIngreso)
       instance.salarioMensual = validated_data.get('salarioMensual', instance.salarioMensual)
       instance.cargo = validated_data.get('cargo', instance.cargo)
