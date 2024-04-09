@@ -12,7 +12,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
-import { jwtDecode } from 'jwt-decode';
 
 export default function Login() {
 
@@ -37,31 +36,11 @@ export default function Login() {
 
     const token = localStorage.getItem('token');
     if (token) {
-      
-      checkTokenExpiration();
       navigate('/dashboard');
     }
   }
   , [navigate]);
 
-  const checkTokenExpiration = async () => {
-    const token = localStorage.getItem('token');
-    const decodedToken = jwtDecode(token);
-    const expirationTime = decodedToken.exp * 1000;
-    const currentTime = new Date().getTime();
-    if (currentTime >= expirationTime) {
-      refreshToken();
-    }
-  }
-
-  const refreshToken = async () => {
-    const refreshToken = localStorage.getItem('refreshToken');
-    const newToken = await axios.post('http://localhost:8000/api/token/refresh/', {
-      refresh: refreshToken,
-    });
-    localStorage.setItem('token', newToken.data.access);
-    localStorage.setItem('refreshToken', newToken.data.refresh);
-  }
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
