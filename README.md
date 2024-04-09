@@ -48,6 +48,7 @@ npm install
 Despues de esto debemos generar las migraciones con el siguiente comando
 
 ```
+python manage.py makemigrations empleados_api
 python manage.py makemigrations
 python manage.py migrate
 ```
