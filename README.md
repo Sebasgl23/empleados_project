@@ -40,6 +40,7 @@ pip install -r requirements.txt
 Para el proyecto de react se deben correr los siguientes comandos estando en la carpeta empleados_frontend
 
 ```
+cd empleados_frontend
 npm install
 ```
 
@@ -71,6 +72,7 @@ python manage.py runserver
 Ahora debemos movernos a la carpeta empleados_frontend y correr el siguiente comando para iniciar el servidor de react
 
 ```
+cd empleados_frontend
 npm run dev
 ```
 
